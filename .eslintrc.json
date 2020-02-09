@@ -4,7 +4,10 @@
         "es6": true,
         "node": true
     },
-    "extends": ["plugin:prettier/recommended"],
+    "extends": [
+        "plugin:jest/recommended",
+        "plugin:prettier/recommended"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"

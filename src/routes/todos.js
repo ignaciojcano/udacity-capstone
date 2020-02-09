@@ -50,9 +50,9 @@ router.put("/:id", async (req, res, next) => {
           text,
           complete
         },
-          {
-              new: true
-          }
+        {
+          new: true
+        }
       )
     );
   } catch (e) {

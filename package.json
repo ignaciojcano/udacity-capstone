@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint {src,config}/**/*.js",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,11 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jest": "^23.7.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "faker": "^4.1.0",
     "jest": "^25.1.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }

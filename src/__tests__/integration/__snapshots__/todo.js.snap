@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TODOS should create a todo 1`] = `
+Object {
+  "__v": 0,
+  "text": "A todo description",
+}
+`;
+
+exports[`TODOS should fetch a todo by id 1`] = `
+Object {
+  "__v": 0,
+  "_id": "56cb91bdc3464f14678934ca",
+  "complete": false,
+  "text": "Veniam et esse autem et.",
+}
+`;
+
+exports[`TODOS should fetch all the todos 1`] = `
+Array [
+  Object {
+    "__v": 0,
+    "_id": "56cb91bdc3464f14678934ca",
+    "complete": false,
+    "text": "Veniam et esse autem et.",
+  },
+  Object {
+    "__v": 0,
+    "_id": "56cb91bdc3464f14678934cb",
+    "complete": true,
+    "text": "Eligendi non mollitia.",
+  },
+  Object {
+    "__v": 0,
+    "_id": "56cb91bdc3464f14678934cc",
+    "complete": false,
+    "text": "Sed quisquam neque quibusdam quo ullam labore magnam ullam optio.",
+  },
+]
+`;
+
+exports[`TODOS should update a todo by id 1`] = `
+Object {
+  "__v": 0,
+  "_id": "56cb91bdc3464f14678934ca",
+  "complete": true,
+  "text": "An updated description",
+}
+`;
