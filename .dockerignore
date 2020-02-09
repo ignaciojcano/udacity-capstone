@@ -1,0 +1,5 @@
+node_modules
+.aws
+.docker
+run_docker.sh
+run_kubernetes.sh
