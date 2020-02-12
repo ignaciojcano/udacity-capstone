@@ -1,16 +1,22 @@
 pipeline {
-    agent any
+    agent none
     stages {
-        stage('Lint HTML') {
+        stage('Linting') {
+            agent {
+                docker { image 'node:12.15.0-stretch' }
+            }
             steps {
-                sh 'tidy -q -e *.html'
+                npm i
+                npm run lint
             }
         }
-        stage('Upload to AWS') {
+        stage('Testing') {
+            agent {
+                docker { image 'node:12.15.0-stretch' }
+            }
             steps {
-                withAWS(region:'us-west-2', credentials:'aws-static') {
-                    s3Upload(file:'index.html', bucket:'udacity-p3-bucket-nacho')
-                }
+                npm i
+                npm test
             }
         }
     }
