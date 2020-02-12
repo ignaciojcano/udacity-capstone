@@ -6,6 +6,8 @@ pipeline {
                 docker { image 'node:12.15.0-stretch' }
             }
             steps {
+                sh 'ls -la'
+                sh 'node --version'
                 sh 'npm i'
                 sh 'npm run lint'
             }
