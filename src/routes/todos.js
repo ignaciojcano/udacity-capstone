@@ -7,7 +7,7 @@ router.get("/", async (req, res, next) => {
   try {
     res.json(await Todo.find());
   } catch (e) {
-    next(e);
+    return next(e);
   }
 });
 
@@ -20,7 +20,7 @@ router.post("/", async (req, res, next) => {
       })
     );
   } catch (e) {
-    next(e);
+    return next(e);
   }
 });
 
@@ -33,7 +33,7 @@ router.get("/:id", async (req, res, next) => {
       })
     );
   } catch (e) {
-    next(e);
+    return next(e);
   }
 });
 
@@ -56,7 +56,7 @@ router.put("/:id", async (req, res, next) => {
       )
     );
   } catch (e) {
-    next(e);
+    return next(e);
   }
 });
 
@@ -69,7 +69,7 @@ router.delete("/:id", async (req, res, next) => {
       })
     );
   } catch (e) {
-    next(e);
+    return next(e);
   }
 });
 

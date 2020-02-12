@@ -7,8 +7,8 @@
     "start": "node src/index.js",
     "lint": "eslint {src,config}/**/*.js",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --runInBand --forceExit",
+    "test:watch": "jest --watch --runInBand"
   },
   "repository": {
     "type": "git",
