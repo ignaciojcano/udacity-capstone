@@ -6,8 +6,8 @@ pipeline {
                 docker { image 'node:12.15.0-stretch' }
             }
             steps {
-                npm i
-                npm run lint
+                sh 'npm i'
+                sh 'npm run lint'
             }
         }
         stage('Testing') {
@@ -15,8 +15,8 @@ pipeline {
                 docker { image 'node:12.15.0-stretch' }
             }
             steps {
-                npm i
-                npm test
+                sh 'npm i'
+                sh 'npm test'
             }
         }
     }
