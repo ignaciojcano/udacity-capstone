@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Linting') {
             agent {
-                docker { image 'node:12.15.0-stretch' }
+                docker {
+                    image 'node:12.15.0-stretch'
+                    args '-u root'
+                }
             }
             steps {
                 sh 'ls -la'
@@ -14,7 +17,10 @@ pipeline {
         }
         stage('Testing') {
             agent {
-                docker { image 'node:12.15.0-stretch' }
+                docker {
+                    image 'node:12.15.0-stretch'
+                    args '-u root'
+                }
             }
             steps {
                 sh 'npm i'
