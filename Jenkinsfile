@@ -16,15 +16,15 @@ pipeline {
             }
         }
         stage('Testing') {
-            agent {
-                docker {
-                    image 'node:12.15.0-stretch'
-                    args '-u root'
+            node {
+                checkout scm
+                docker.image('mongo:4.0').withRun('') { c ->
+                    docker.image('node:12.15.0-stretch').inside("--link ${c.id}:database -e 'MONGODB_URI=mongodb://database:27017/todos'") {
+                        sh 'ls -la'
+                        sh 'npm i'
+                        sh 'npm test'
+                    }
                 }
-            }
-            steps {
-                sh 'npm i'
-                sh 'npm test'
             }
         }
     }
