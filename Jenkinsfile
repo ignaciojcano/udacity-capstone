@@ -17,8 +17,8 @@ pipeline {
         }
         stage('Testing') {
             steps {
-                docker.image('mongo:4.0').withRun('') { c ->
-                    docker.image('node:12.15.0-stretch').inside("--link ${c.id}:database -e 'MONGODB_URI=mongodb://database:27017/todos'") {
+                image('mongo:4.0').withRun() { c ->
+                    image('node:12.15.0-stretch').inside("--link ${c.id}:database -e 'MONGODB_URI=mongodb://database:27017/todos'") {
                         sh 'ls -la'
                         sh 'npm i'
                         sh 'npm test'
