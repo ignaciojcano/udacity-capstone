@@ -1,5 +1,10 @@
 pipeline {
-    agent none
+    agent any
+    environment {
+        registry = "icano/udacity-capstone"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
     stages {
         stage('Linting') {
             agent {
@@ -29,6 +34,30 @@ pipeline {
 //                         }
                     }
                 }
+            }
+        }
+        stage('Build docker image') {
+            steps {
+                script {
+                    dockerImage = docker.build("$registry:$BUILD_NUMBER", "-f .docker/Dockerfile")
+                    dockerImage.inside {
+                        sh 'npm run lint'
+                    }
+                }
+            }
+        }
+        stage('Push docker image') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('Clean up local docker images') {
+            steps{
+                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
     }
