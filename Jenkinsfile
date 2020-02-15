@@ -21,6 +21,7 @@ pipeline {
                     checkout scm
                     docker.image('mongo:4.0').withRun() { c ->
                         sh "docker logs ${c.id}"
+                        sh "echo test"
 //                         docker.image('node:12.15.0-stretch').inside("--link ${c.id}:database -e 'MONGODB_URI=mongodb://database:27017/todos'") {
 //                             sh 'ls -la'
 //                             sh 'npm i'
