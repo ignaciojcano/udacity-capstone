@@ -55,14 +55,16 @@ pipeline {
             }
         }
         stage('Clean up local docker images') {
-            steps{
+            steps {
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
         stage('Deploy to EKS') {
-            withAWS(credentials: 'aws-jenkins-credentials') {
-                sh 'aws eks --region us-west-2 update-kubeconfig --name capacity-capstone-cluster5'
-                sh 'kubectl apply -f .kube'
+            steps {
+                withAWS(credentials: 'aws-jenkins-credentials') {
+                    sh 'aws eks --region us-west-2 update-kubeconfig --name capacity-capstone-cluster5'
+                    sh 'kubectl apply -f .kube'
+                }
             }
         }
     }
