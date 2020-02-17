@@ -62,7 +62,7 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 withAWS(credentials: 'aws-jenkins-credentials') {
-                    sh 'aws eks --region us-west-2 update-kubeconfig --name capacity-capstone-cluster5'
+                    sh 'aws eks --region us-west-2 update-kubeconfig --name capacity-capstone-cluster'
                     sh 'kubectl apply -f .kube'
                 }
             }
