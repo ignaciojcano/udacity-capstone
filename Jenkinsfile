@@ -61,9 +61,11 @@ pipeline {
         }
         stage('Deploy to EKS') {
             steps {
-                sh 'eksctl utils write-kubeconfig -r us-west-2 -c capacity-capstone-cluster'
-                sh 'kubectl apply -f .kube'
-                sh 'kubectl patch deployment todos -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +\'%s\'`\"}}}}}"'
+                withAWS(credentials: 'aws-jenkins-credentials', region: 'us-west-2') {
+                    sh 'eksctl utils write-kubeconfig -r us-west-2 -c capacity-capstone-cluster'
+                    sh 'kubectl apply -f .kube'
+                    sh 'kubectl patch deployment todos -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +\'%s\'`\"}}}}}"'
+                }
             }
         }
     }
