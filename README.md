@@ -51,3 +51,12 @@ aws cloudformation create-stack \
     --parameters file://.aws/eks-params.json \
     --capabilities "CAPABILITY_NAMED_IAM"
 ```
+
+## Jenkins pipeline
+The project uses Jenkins for CI and CD, below are the steps and a brief description of each:
+- `Linting` - Step that lints the projects code (`npm run lint`)
+- `Testing` - Step that runs our test suites (`npm test`)
+- `Build docker image` - Step that builds our docker image from our Dockerfile
+- `Push docker image` - Step that tags and pushes our docker image to dockerhub
+- `Clean up local docker images` - Step that cleans up local images (clear space in our jenkins server)
+- `Deploy to EKS` - Step that configures kubectl and deploys our configuration to EKS
