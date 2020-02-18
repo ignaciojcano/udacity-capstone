@@ -28,7 +28,7 @@ describe("TODOS", () => {
   });
 
   it("should fetch all the todos", async () => {
-    await createTodo("56cb91bdc3464f14678934cd");
+    await createTodo("56cb91bdc3464f14678934ca");
     await createTodo("56cb91bdc3464f14678934cb", true);
     await createTodo("56cb91bdc3464f14678934cc");
     const response = await request.get("/todos");
