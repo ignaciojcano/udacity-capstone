@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/ignaciojcano/udacity-capstone#readme",
   "dependencies": {
-    "config": "^3.2.5",
+    "config": "^3.3.8",
     "express": "^4.17.1",
     "mongoose": "^5.8.11"
   },
